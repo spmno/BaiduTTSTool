@@ -48,7 +48,7 @@ class _TTSWorkerState extends State<TTSWorker> {
     super.dispose();
   }
 
-  void combineMp3(int count) async {
+  Future<void> combineMp3(int count) async {
     var command = "ffmpeg ";
     var currentDir = Directory.current.path + r'\temp\';
     for (var i = 1; i <= count; i++) {
@@ -63,9 +63,9 @@ class _TTSWorkerState extends State<TTSWorker> {
     await Shell().run(command);
   }
 
-  void convertData() async {
+  Future<void> convertData() async {
     var wholeText = _textFieldController.text;
-    //_convertButton.onPressed = null;
+    // Disable the button.
     setState(() {
       _isPressed = true;
     });
